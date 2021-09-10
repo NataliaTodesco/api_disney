@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3qZu23Bc5Uwqj3ZSnjgF/ZzSJYLhWiMFgnTh48zK2HxzKmXWGfr0It/LNJo/+GPvWtgiH47yjVsGhCEu/oVrRQ==",
+  "dgSpecHash": "7jscQVt0Ba8KQxmjmudMc0N9cXqu/IhLqHCmEeUF1DObWqgWags6Xv72q6mbDjh76Wc0GmFamHN+j0IDxY6VYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Downloads\\Challenge\\MundoDisney\\MundoDisney.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Documents\\GitHub\\api_disney\\Challenge\\MundoDisney\\MundoDisney.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",

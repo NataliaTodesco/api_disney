@@ -1236,11 +1236,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Downloads\\Challenge\\MundoDisney\\MundoDisney.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Documents\\GitHub\\api_disney\\Challenge\\MundoDisney\\MundoDisney.csproj",
       "projectName": "MundoDisney",
-      "projectPath": "C:\\Users\\Usuario\\Downloads\\Challenge\\MundoDisney\\MundoDisney.csproj",
+      "projectPath": "C:\\Users\\Usuario\\Documents\\GitHub\\api_disney\\Challenge\\MundoDisney\\MundoDisney.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Downloads\\Challenge\\MundoDisney\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Documents\\GitHub\\api_disney\\Challenge\\MundoDisney\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -10,8 +10,6 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         [Key]
         public int idPersonaje { get; set; }
-        [NotMapped]
-        public IFormFile imagen { get; set; }
         public string nombre { get; set; }
         public int edad { get; set; }
         public float peso { get; set; }

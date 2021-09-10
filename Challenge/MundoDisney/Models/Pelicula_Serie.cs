@@ -11,8 +11,6 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         [Key]
         public int idPelicula_Serie { get; set; }
-        [NotMapped]
-        public IFormFile imagen { get; set; }
         public string titulo { get; set; }
         public DateTime fechaCreacion { get; set; }
         public int calificación { get; set; }

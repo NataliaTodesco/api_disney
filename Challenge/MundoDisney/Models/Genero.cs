@@ -12,9 +12,6 @@ namespace Models
         public int idGenero { get; set; }
         public string nombre { get; set; }
         
-        [NotMapped]
-        public IFormFile imagen { get; set; }
-
         public int idPelicula_serie{get;set;}
         [ForeignKey("idPelicula_serie")]
         public Pelicula_Serie peliculas_series { get; set; }

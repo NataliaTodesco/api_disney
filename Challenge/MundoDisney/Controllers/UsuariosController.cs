@@ -6,6 +6,7 @@ using Comandos;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Models;
 using Resultados;
 
 namespace MundoDisney.Controllers
@@ -47,6 +48,41 @@ namespace MundoDisney.Controllers
             }
 
         }
+
+        [HttpPost]
+        [Route("Usuario/RegistrarUsuarios")]
+        public ActionResult<ResultadoApi> singUp([FromBody]ComandoUsuario comando)
+        {
+            var resultado = new ResultadoApi();
+
+            if(comando.Email.Equals(""))
+            {
+                resultado.Ok = false;
+                resultado.Error = "Ingrese Email";
+                return resultado;
+            }
+
+            if(comando.Password.Equals(""))
+            {
+                resultado.Ok = false;
+                resultado.Error = "Ingrese Password";
+                return resultado;
+            }
+
+            var usu = new Usuario();
+            usu.Email = comando.Email;
+            usu.Password = comando.Password;
+
+         
+            db.Usuarios.Add(usu);
+            db.SaveChanges();
+           
+            resultado.Ok = true;
+            resultado.Return = db.Usuarios.ToList();
+
+            return resultado;
+        }
+
 
         [HttpPost]
         [Route("Usuario/auth/login")]

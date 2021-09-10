@@ -35,7 +35,7 @@ namespace MundoDisney.Controllers
             {
                 foreach (var pelicula in db.Peliculas_Series.ToList())
                 {
-                    resultado.Return += pelicula.imagen+" "+pelicula.titulo+" "+pelicula.fechaCreacion+"\n ";
+                    resultado.Return += pelicula.titulo+" "+pelicula.fechaCreacion+"\n ";
                 }
                 resultado.Ok = true;
 
@@ -73,18 +73,11 @@ namespace MundoDisney.Controllers
 
         }
 
-         [HttpPost]
+        [HttpPost]
         [Route("/movies/create")]
-        public ActionResult<ResultadoApi> AltaPersona([FromBody]ComandoPeliculas comando)
+        public ActionResult<ResultadoApi> AltaPelicula([FromBody]ComandoPeliculas comando)
         {
             var resultado = new ResultadoApi();
-
-            if(comando.imagen.Equals(""))
-            {
-                resultado.Ok = false;
-                resultado.Error = "Ingrese imagen";
-                return resultado;
-            }
 
             if(comando.titulo.Equals(""))
             {
@@ -116,27 +109,16 @@ namespace MundoDisney.Controllers
 
             var p = new Pelicula_Serie();
             p.idPelicula_Serie = comando.idPelicula_Serie;
-            p.imagen = comando.imagen;
             p.titulo = comando.titulo;
             p.fechaCreacion = comando.fechaCreacion;
             p.calificación = comando.calificación;
             p.idPersonaje = comando.idPersonaje;
 
-         
-	        db.Entry(p).Reference(x=>x.personajes).Load();
-
-            foreach (var c in db.Peliculas_Series)
-            {
-                var idPersonaje = c.idPersonaje;
-                var Personaje = db.Personajes.FirstOrDefault(c => c.idPersonaje == idPersonaje);
-                c.personajes = Personaje;
-            }
-
             db.Peliculas_Series.Add(p);
             db.SaveChanges();
            
             resultado.Ok = true;
-            resultado.Return = db.Personajes.ToList();
+            resultado.Return = db.Peliculas_Series.ToList();
 
             return resultado;
         }
@@ -148,12 +130,6 @@ namespace MundoDisney.Controllers
             var resultado = new ResultadoApi();
             try
             {
-                if(comando.imagen.Equals(""))
-                {
-                    resultado.Ok = false;
-                    resultado.Error = "Ingrese imagen";
-                    return resultado;
-                }
 
                 if(comando.titulo.Equals(""))
                 {
@@ -187,27 +163,18 @@ namespace MundoDisney.Controllers
                 if(p != null)
                 {
                     p.idPelicula_Serie = comando.idPelicula_Serie;
-                    p.imagen = comando.imagen;
                     p.titulo = comando.titulo;
                     p.fechaCreacion = comando.fechaCreacion;
                     p.calificación = comando.calificación;
                     p.idPersonaje = comando.idPersonaje;
-            
-                    db.Entry(p).Reference(x=>x.personajes).Load();
-
-                    foreach (var c in db.Peliculas_Series)
-                    {
-                        var idPersonaje = c.idPersonaje;
-                        var Personaje = db.Personajes.FirstOrDefault(c => c.idPersonaje == idPersonaje);
-                        c.personajes = Personaje;
-                    }
+        
 
                     db.Peliculas_Series.Update(p);
                     db.SaveChanges();
                 }
 
                 resultado.Ok = true;
-                resultado.Return = db.Personajes.ToList();;
+                resultado.Return = db.Peliculas_Series.ToList();;
 
                  return resultado;
             }
@@ -256,13 +223,8 @@ namespace MundoDisney.Controllers
             var titulo = Titulo;
             try
             {
-                var peliculas = new ArrayList();
-                peliculas.Add(db.Peliculas_Series.Where(u => u.titulo.Equals(titulo)));
+               resultado.Return = db.Peliculas_Series.FirstOrDefault((u => u.titulo.Equals(titulo)));
 
-                foreach (var per in peliculas.ToArray())
-                {
-                    resultado.Result.Add(per);
-                }
                 return resultado;
             }
             catch (Exception ex)
@@ -285,13 +247,8 @@ namespace MundoDisney.Controllers
 
             try
             {
-                var peliculas = new ArrayList();
-                peliculas.Add(db.Peliculas_Series.Where(u => u.idPelicula_Serie.Equals(genero.idPelicula_serie)));
-
-                foreach (var per in peliculas.ToArray())
-                {
-                    resultado.Result.Add(per);
-                }
+                resultado.Return = db.Peliculas_Series.FirstOrDefault(u => u.idPelicula_Serie.Equals(genero.idPelicula_serie));
+                
                 return resultado;
             }
             catch (Exception ex)
